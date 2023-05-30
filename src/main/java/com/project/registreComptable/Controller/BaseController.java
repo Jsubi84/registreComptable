@@ -1,4 +1,4 @@
-package com.project.registreComptable.Controler;
+package com.project.registreComptable.Controller;
 
 import java.io.Serializable;
 

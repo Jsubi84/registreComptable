@@ -4,12 +4,12 @@ package com.project.registreComptable.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -35,17 +35,20 @@ public class Subcategoria extends Base{
 	@Column(name = "descripcio")
 	private String descripcio;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_categoria")
+	@ManyToOne
+	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 	
 	
-	@Column(name = "registres")
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinTable(
-			name = "sub_registres",
-			joinColumns = @JoinColumn(name = "subcategoria_id"),
-			inverseJoinColumns = @JoinColumn(name = "registre_id")
-			)
+//	@Column(name = "registres")
+//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//	@JoinTable(
+//			name = "sub_registres",
+//			joinColumns = @JoinColumn(name = "subcategoria_id"),
+//			inverseJoinColumns = @JoinColumn(name = "registre_id")
+//			)
+//	@JsonIgnore
+	@JsonBackReference
+	@OneToMany(mappedBy= "subcategoria",cascade = CascadeType.REFRESH, orphanRemoval = true)
 	private List<Registre> registres = new ArrayList<Registre>();
 }

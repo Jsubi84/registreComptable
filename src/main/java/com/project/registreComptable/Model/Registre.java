@@ -1,6 +1,6 @@
 package com.project.registreComptable.Model;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -28,12 +28,12 @@ public class Registre extends Base{
 	private Boolean tipus;
 	
 	@Column(name = "data")
-	private LocalDate data;
+	private Date data;
 	
-	@Column(name = "import")
-	private LocalDate importReg;	
+	@Column(name = "importreg")
+	private Double importreg;	
 	
 	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "fk_subcategoria")
+	@JoinColumn(name = "subcategoria_id")
 	private Subcategoria subcategoria;
 }

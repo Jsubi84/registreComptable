@@ -3,11 +3,11 @@ package com.project.registreComptable.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -32,12 +32,15 @@ public class Categoria extends Base{
 	@Column(name = "descripcio")
 	private String descripcio;
 	
-	@Column(name = "subcategories")
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinTable(
-			name = "cat_sub",
-			joinColumns = @JoinColumn(name = "categoria_id"),
-			inverseJoinColumns = @JoinColumn(name = "subcategoria_id")
-			)
+//	@Column(name = "subcategories")
+//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//	@JoinTable(
+//			name = "cat_sub",
+//			joinColumns = @JoinColumn(name = "categoria_id"),
+//			inverseJoinColumns = @JoinColumn(name = "subcategoria_id")
+//			)
+//	@JsonIgnore
+	@JsonBackReference
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REFRESH, orphanRemoval = true)
 	private List<Subcategoria> subcategories = new ArrayList<Subcategoria>();
 }
