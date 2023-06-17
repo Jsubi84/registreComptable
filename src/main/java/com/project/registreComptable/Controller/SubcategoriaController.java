@@ -9,8 +9,8 @@ import com.project.registreComptable.Model.Subcategoria;
 import com.project.registreComptable.Service.SubcategoriaServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-//@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping({"/api/v1/subcategories"})
 public class SubcategoriaController extends BaseControllerImpl<Subcategoria, SubcategoriaServiceImpl> {
 }

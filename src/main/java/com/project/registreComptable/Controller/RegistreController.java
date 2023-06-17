@@ -12,8 +12,8 @@ import com.project.registreComptable.Model.Registre;
 import com.project.registreComptable.Service.RegistreServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-//@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping({"/api/v1/registres"})
 public class RegistreController extends BaseControllerImpl<Registre, RegistreServiceImpl> {
 	
@@ -48,6 +48,15 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 	public ResponseEntity<?> getSumaByTipus(@RequestParam Boolean tipus, @RequestParam int year){
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getSumaByTipus(tipus, year));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+		}
+	}
+	
+	@GetMapping("/getResumAny")
+	public ResponseEntity<?> getResumAny(@RequestParam int year){
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(service.getResumAny( year));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
 		}

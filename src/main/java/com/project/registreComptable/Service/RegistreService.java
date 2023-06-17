@@ -10,4 +10,6 @@ public interface RegistreService extends BaseService<Registre, Long> {
 	List<Registre> getRegistreByCategoria(Long categoria_id) throws Exception;
 	List<Registre> getTipusRegistre(Boolean tipus) throws Exception;
 	Double getSumaByTipus(Boolean tipus, int year) throws Exception;
+	List<Registre> getRegistreByMonthAndYear(int month, int year) throws Exception;
+	List<Object[]> getResumAny(int year) throws Exception;
 }

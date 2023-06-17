@@ -57,6 +57,23 @@ public class RegistreServiceImpl extends BaseServiceImpl<Registre, Long> impleme
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
-	};
+	}
 
+	@Override
+	public List<Registre> getRegistreByMonthAndYear(int month, int year) throws Exception {
+		try {
+			return registreRepository.getRegistreByMonthAndYear(month, year);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+
+	@Override
+	public List<Object[]> getResumAny(int year) throws Exception {
+		try {
+			return registreRepository.getResumAny(year);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
 }
