@@ -29,17 +29,12 @@ public class Categoria extends Base{
 	@Column(name = "nom")
 	private String nom;
 	
+	@Column(name = "tipus")
+	private Boolean tipus;
+	
 	@Column(name = "descripcio")
 	private String descripcio;
 	
-//	@Column(name = "subcategories")
-//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//	@JoinTable(
-//			name = "cat_sub",
-//			joinColumns = @JoinColumn(name = "categoria_id"),
-//			inverseJoinColumns = @JoinColumn(name = "subcategoria_id")
-//			)
-//	@JsonIgnore
 	@JsonBackReference
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REFRESH, orphanRemoval = true)
 	private List<Subcategoria> subcategories = new ArrayList<Subcategoria>();

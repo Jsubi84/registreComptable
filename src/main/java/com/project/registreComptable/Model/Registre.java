@@ -33,6 +33,9 @@ public class Registre extends Base{
 	@Column(name = "importreg")
 	private Double importreg;	
 	
+	@Column(name = "descripcio")
+	private String descripcio;	
+	
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "subcategoria_id")
 	private Subcategoria subcategoria;

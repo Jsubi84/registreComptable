@@ -18,4 +18,14 @@ public class SubcategoriaServiceImpl extends BaseServiceImpl<Subcategoria, Long>
 		super(baseRepository);
 	}
 
+	@Override
+	public int checkDeleteCategoria(Long id) throws Exception {
+		try {
+			int numSubcategories = subcategoriaRepository.checkDeleteCategoria(id);
+			return numSubcategories;
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
 }

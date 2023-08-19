@@ -40,33 +40,33 @@ public class RegistreServiceImpl extends BaseServiceImpl<Registre, Long> impleme
 		}
 	}
 	
-	@Override
-	public List<Registre> getTipusRegistre(Boolean tipus)throws Exception {
-		try {
-			List<Registre> registres = registreRepository.getTipusRegistre(tipus);
-			return registres;
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-	};
-
-	@Override
-	public Double getSumaByTipus(Boolean tipus, int year)throws Exception {
-		try {
-			return registreRepository.getSumaByTipus(tipus, year);
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-	}
-
-	@Override
-	public List<Registre> getRegistreByMonthAndYear(int month, int year) throws Exception {
-		try {
-			return registreRepository.getRegistreByMonthAndYear(month, year);
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-	}
+//	@Override
+//	public List<Registre> getTipusRegistre(Boolean tipus)throws Exception {
+//		try {
+//			List<Registre> registres = registreRepository.getTipusRegistre(tipus);
+//			return registres;
+//		} catch (Exception e) {
+//			throw new Exception(e.getMessage());
+//		}
+//	};
+//
+//	@Override
+//	public Double getSumaByTipus(Boolean tipus, int year)throws Exception {
+//		try {
+//			return registreRepository.getSumaByTipus(tipus, year);
+//		} catch (Exception e) {
+//			throw new Exception(e.getMessage());
+//		}
+//	}
+//
+//	@Override
+//	public List<Registre> getRegistreByMonthAndYear(int month, int year) throws Exception {
+//		try {
+//			return registreRepository.getRegistreByMonthAndYear(month, year);
+//		} catch (Exception e) {
+//			throw new Exception(e.getMessage());
+//		}
+//	}
 
 	@Override
 	public List<Object[]> getResumAny(int year) throws Exception {
@@ -76,4 +76,15 @@ public class RegistreServiceImpl extends BaseServiceImpl<Registre, Long> impleme
 			throw new Exception(e.getMessage());
 		}
 	}
+
+	@Override
+	public int checkDeleteSubcategoria(Long id) throws Exception {
+		try {
+			return registreRepository.checkDeleteSubcategoria(id);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
+	
 }

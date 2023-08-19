@@ -12,4 +12,5 @@ import com.project.registreComptable.Service.CategoriaServiceImpl;
 @CrossOrigin(origins = "*")
 @RequestMapping({"/api/v1/categories"})
 public class CategoriaController extends BaseControllerImpl<Categoria, CategoriaServiceImpl> {
+	
 }

@@ -35,28 +35,37 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 		}
 	}
 	
-	@GetMapping("/getTipusReg")
-	public ResponseEntity<?> getTipusRegistre(@RequestParam Boolean tipus){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(service.getTipusRegistre(tipus));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-		}
-	}
-	
-	@GetMapping("/getSumaByTipus")
-	public ResponseEntity<?> getSumaByTipus(@RequestParam Boolean tipus, @RequestParam int year){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(service.getSumaByTipus(tipus, year));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-		}
-	}
+//	@GetMapping("/getTipusReg")
+//	public ResponseEntity<?> getTipusRegistre(@RequestParam Boolean tipus){
+//		try {
+//			return ResponseEntity.status(HttpStatus.OK).body(service.getTipusRegistre(tipus));
+//		} catch (Exception e) {
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+//		}
+//	}
+//	
+//	@GetMapping("/getSumaByTipus")
+//	public ResponseEntity<?> getSumaByTipus(@RequestParam Boolean tipus, @RequestParam int year){
+//		try {
+//			return ResponseEntity.status(HttpStatus.OK).body(service.getSumaByTipus(tipus, year));
+//		} catch (Exception e) {
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+//		}
+//	}
 	
 	@GetMapping("/getResumAny")
 	public ResponseEntity<?> getResumAny(@RequestParam int year){
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getResumAny( year));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+		}
+	}
+	
+	@GetMapping("/ckDeleteSubcat")
+	public ResponseEntity<?> checkDeleteSubcategoria(@RequestParam Long id){
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(service.checkDeleteSubcategoria(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
 		}
