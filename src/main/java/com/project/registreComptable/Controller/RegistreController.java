@@ -35,24 +35,6 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 		}
 	}
 	
-//	@GetMapping("/getTipusReg")
-//	public ResponseEntity<?> getTipusRegistre(@RequestParam Boolean tipus){
-//		try {
-//			return ResponseEntity.status(HttpStatus.OK).body(service.getTipusRegistre(tipus));
-//		} catch (Exception e) {
-//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-//		}
-//	}
-//	
-//	@GetMapping("/getSumaByTipus")
-//	public ResponseEntity<?> getSumaByTipus(@RequestParam Boolean tipus, @RequestParam int year){
-//		try {
-//			return ResponseEntity.status(HttpStatus.OK).body(service.getSumaByTipus(tipus, year));
-//		} catch (Exception e) {
-//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-//		}
-//	}
-	
 	@GetMapping("/getResumAny")
 	public ResponseEntity<?> getResumAny(@RequestParam int year){
 		try {
@@ -71,4 +53,31 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 		}
 	}
 	
+	@GetMapping("/allOrderByData")
+	public ResponseEntity<?> findAllOrderByDataDesc(){
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(service.findAllOrderByDataDesc());
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+		}
+	}
+	
+	
+//	@GetMapping("/getTipusReg")
+//	public ResponseEntity<?> getTipusRegistre(@RequestParam Boolean tipus){
+//		try {
+//			return ResponseEntity.status(HttpStatus.OK).body(service.getTipusRegistre(tipus));
+//		} catch (Exception e) {
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+//		}
+//	}
+//	
+//	@GetMapping("/getSumaByTipus")
+//	public ResponseEntity<?> getSumaByTipus(@RequestParam Boolean tipus, @RequestParam int year){
+//		try {
+//			return ResponseEntity.status(HttpStatus.OK).body(service.getSumaByTipus(tipus, year));
+//		} catch (Exception e) {
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+//		}
+//	}	
 }

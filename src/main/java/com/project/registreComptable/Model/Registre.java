@@ -23,9 +23,6 @@ import lombok.NoArgsConstructor;
 public class Registre extends Base{
 	
 	private static final long serialVersionUID = 1L;
-
-	@Column(name = "tipus")
-	private Boolean tipus;
 	
 	@Column(name = "data")
 	private Date data;

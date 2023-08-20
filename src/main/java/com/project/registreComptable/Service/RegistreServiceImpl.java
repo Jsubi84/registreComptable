@@ -40,6 +40,35 @@ public class RegistreServiceImpl extends BaseServiceImpl<Registre, Long> impleme
 		}
 	}
 	
+	@Override
+	public List<Registre> findAllOrderByDataDesc() throws Exception {
+		try {
+			List<Registre> registres = registreRepository.findAllOrderByDataDesc();
+			return registres;
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+
+		@Override
+	public List<Object[]> getResumAny(int year) throws Exception {
+		try {
+			return registreRepository.getResumAny(year);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+
+	@Override
+	public int checkDeleteSubcategoria(Long id) throws Exception {
+		try {
+			return registreRepository.checkDeleteSubcategoria(id);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
+	
 //	@Override
 //	public List<Registre> getTipusRegistre(Boolean tipus)throws Exception {
 //		try {
@@ -67,24 +96,5 @@ public class RegistreServiceImpl extends BaseServiceImpl<Registre, Long> impleme
 //			throw new Exception(e.getMessage());
 //		}
 //	}
-
-	@Override
-	public List<Object[]> getResumAny(int year) throws Exception {
-		try {
-			return registreRepository.getResumAny(year);
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-	}
-
-	@Override
-	public int checkDeleteSubcategoria(Long id) throws Exception {
-		try {
-			return registreRepository.checkDeleteSubcategoria(id);
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-	}
-	
 	
 }

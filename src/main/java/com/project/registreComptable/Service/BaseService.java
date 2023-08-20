@@ -3,6 +3,8 @@ package com.project.registreComptable.Service;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort;
+
 import com.project.registreComptable.Model.Base;
 
 public interface BaseService<E extends Base, ID extends Serializable> {
