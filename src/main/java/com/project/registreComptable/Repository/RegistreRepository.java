@@ -15,19 +15,12 @@ public interface RegistreRepository extends BaseRepository<Registre, Long>{
     //@Query(value="select * from registre r where r.id= :id", nativeQuery=true)
     List<Registre> getRegistreBySubcategoriaId(Long id);
     
-    //Native
-    //@Query(value="select * from registre r where r.data= :data", nativeQuery=true)
-    List<Registre> getRegistreByData(Date data);
-    
     //JPQL
     //@Query(value="select r from Registre r where r.tipus= :tipus")
     //List<Registre> getTipusRegistre(@Param("tipus")Boolean tipus);
     
     //@Query(value="select SUM(importreg) AS total from Registre WHERE tipus= :tipus AND YEAR(data)= :year")
     //Double getSumaByTipus(@Param("tipus")Boolean sumaImport, @Param("year")int year);
- 
-    @Query(value="SELECT r FROM Registre r ORDER BY r.data DESC")
-    List<Registre> findAllOrderByDataDesc();
     
     @Query(value="select r from Registre r JOIN r.subcategoria s JOIN s.categoria c WHERE c.id= :cat")
     List<Registre> getRegistreByCategoria(@Param("cat")Long cat);    
