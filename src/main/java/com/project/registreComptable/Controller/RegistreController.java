@@ -53,7 +53,7 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 		}
 	}
 	
-	@GetMapping("/findAllRegWithSort")
+	@GetMapping("/findAllWithSort")
 	public ResponseEntity<?> findAllOrderByDataDesc(){
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(service.findAllWithSort());

@@ -31,16 +31,6 @@ public class RegistreServiceImpl extends BaseServiceImpl<Registre, Long> impleme
 		}
 	}
 	
-//	@Override
-//	public List<Registre> getDataRange() throws Exception {
-//		try {
-//			List<Registre> registres = registreRepository.findAll(Sort.by("data").descending());
-//			return registres;
-//		} catch (Exception e) {
-//			throw new Exception(e.getMessage());
-//		}
-//	}
-
 	@Override
 	public List<Registre> getRegistreBySubcategoriaId(Long id) throws Exception {
 		try {

@@ -11,9 +11,5 @@ public interface RegistreService extends BaseService<Registre, Long> {
 	List<Object[]> getResumAny(int year) throws Exception;
 	int checkDeleteSubcategoria(Long id) throws Exception;
 	List<Registre> findAllWithSort() throws Exception;
-	//List<Registre> getDataRange() throws Exception;
 	
-	//List<Registre> getTipusRegistre(Boolean tipus) throws Exception;
-	//Double getSumaByTipus(Boolean tipus, int year) throws Exception;
-	//List<Registre> getRegistreByMonthAndYear(int month, int year) throws Exception;	
 }
