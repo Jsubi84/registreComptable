@@ -1,5 +1,7 @@
 package com.project.registreComptable.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.project.registreComptable.Model.Registre;
+import com.project.registreComptable.Model.Subcategoria;
 import com.project.registreComptable.Repository.BaseRepository;
 import com.project.registreComptable.Repository.RegistreRepository;
 
@@ -68,5 +71,15 @@ public class RegistreServiceImpl extends BaseServiceImpl<Registre, Long> impleme
 			throw new Exception(e.getMessage());
 		}
 	}
+	
+	@Override
+	public List<Long> getRegistreRepeate(Double importReg, Date data, Long subcatId)throws Exception {
+		try {
+			return registreRepository.getRegistreRepeate(importReg, data, subcatId);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
 	
 }

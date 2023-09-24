@@ -1,5 +1,8 @@
 package com.project.registreComptable.Controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.registreComptable.Model.Registre;
+import com.project.registreComptable.Model.Subcategoria;
 import com.project.registreComptable.Service.RegistreServiceImpl;
 
 @RestController
@@ -61,5 +65,17 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
 		}
 	}
+	
+	
+	@GetMapping("/getRegistreRepeate")
+	public ResponseEntity<?> getRegistreRepeate(@RequestParam Double importReg, @RequestParam String data, @RequestParam Long subcatId){
+		try {
+			Date dataFinal= Date.valueOf(data);
+			return ResponseEntity.status(HttpStatus.OK).body(service.getRegistreRepeate(importReg, dataFinal, subcatId));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+		}
+	}
+	
 		
 }
