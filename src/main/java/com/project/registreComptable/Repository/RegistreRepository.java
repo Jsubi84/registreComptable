@@ -3,11 +3,12 @@ package com.project.registreComptable.Repository;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.project.registreComptable.Model.Registre;
-import com.project.registreComptable.Model.Subcategoria;
 
 @Repository
 public interface RegistreRepository extends BaseRepository<Registre, Long>{
@@ -33,4 +34,7 @@ public interface RegistreRepository extends BaseRepository<Registre, Long>{
     
     @Query(value="SELECT COUNT(*) AS Result FROM registre AS r WHERE r.subcategoria_id= :id", nativeQuery=true)
     int checkDeleteSubcategoria(@Param("id")Long id);
+    
+    Page<Registre> findAll(Pageable pagable);
+   
 }

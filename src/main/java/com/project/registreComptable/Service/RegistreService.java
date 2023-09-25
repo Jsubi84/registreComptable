@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import com.project.registreComptable.Model.Registre;
-import com.project.registreComptable.Model.Subcategoria;
 
 public interface RegistreService extends BaseService<Registre, Long> {
 	
