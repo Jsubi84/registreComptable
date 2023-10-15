@@ -1,18 +1,19 @@
 package com.project.registreComptable.Controller;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.registreComptable.Model.Registre;
-import com.project.registreComptable.Model.Subcategoria;
+import com.project.registreComptable.Model.registreFilter;
 import com.project.registreComptable.Service.RegistreServiceImpl;
 
 @RestController
@@ -77,5 +78,13 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 		}
 	}
 	
+	@PostMapping("/getRegistreFilter")
+	public ResponseEntity<?> getRegistreFilter(@RequestBody registreFilter filter){
+		try {		
+			return ResponseEntity.status(HttpStatus.OK).body(service.filtred(filter.getDInici(), filter.getDFi(), filter.getSubcatId(), filter.getPageable()));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
+		}
+	}
 		
 }

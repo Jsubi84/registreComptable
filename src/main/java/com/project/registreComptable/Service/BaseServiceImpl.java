@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.project.registreComptable.Model.Base;
@@ -43,6 +43,18 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable>im
 		}
 	}
 
+	@Override
+	@Transactional
+	public Page<E> findAll(Specification<E> spec, Pageable pageable) throws Exception {
+		try {
+			Page<E> entities = baseRepository.findAll(spec, pageable);
+			return entities;
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+
+	
 	@Override
 	@Transactional
 	public E findById(ID id) throws Exception {

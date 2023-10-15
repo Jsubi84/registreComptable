@@ -1,7 +1,6 @@
 package com.project.registreComptable.Model;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
