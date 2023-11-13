@@ -2,6 +2,8 @@ package com.project.registreComptable.Model;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +35,7 @@ public class Registre extends Base{
 	@Column(name = "descripcio")
 	private String descripcio;	
 	
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "subcategoria_id")
 	private Subcategoria subcategoria;

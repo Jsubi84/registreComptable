@@ -19,8 +19,7 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
 public class RegistreCostumRepositoryImpl implements RegistreCostumRepository {
-	
-	//Mirar perque peta per la creació del entityManager	
+		
 	@Autowired
 	EntityManager em;
 
@@ -53,7 +52,6 @@ public class RegistreCostumRepositoryImpl implements RegistreCostumRepository {
 	    Page<Registre> result = new PageImpl<Registre>(query.getResultList(), page, totalRows);
 	    
 	    return result;
-	    //return em.createQuery(cq).getResultList();
 	}
 
 }

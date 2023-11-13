@@ -1,20 +1,15 @@
 package com.project.registreComptable.Service;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.project.registreComptable.Model.Registre;
-import com.project.registreComptable.Model.Subcategoria;
 import com.project.registreComptable.Repository.BaseRepository;
 import com.project.registreComptable.Repository.RegistreRepository;
 
@@ -94,7 +89,51 @@ public class RegistreServiceImpl extends BaseServiceImpl<Registre, Long> impleme
 			throw new Exception(e.getMessage());
 		}
 	}
+
+	@Override
+	public double getTotalSubcatByYear(Long id, int year) throws Exception {
+		try {
+			if (registreRepository.getTotalSubcatByYear(id, year) == null){
+				return 0.0;
+			}else {
+				return registreRepository.getTotalSubcatByYear(id, year).doubleValue();				
+			}
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
 	
-	
+	@Override
+	public double getTotalCatByYear(Long id, int year) throws Exception {
+		try {
+			if (registreRepository.getTotalCatByYear(id, year) == null){
+				return 0.0;
+			}else {
+				return registreRepository.getTotalCatByYear(id, year).doubleValue();				
+			}
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+
+	@Override
+	public List<Registre> getSubcatByYearMonth(Long id, int year, int month) throws Exception {
+		try {
+			List<Registre> registres = registreRepository.getSubcatByYearMonth(id, year, month);
+			return registres;
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+
+	@Override
+	public List<Registre> getCatByYearMonth(Long id, int year, int month) throws Exception {
+		try {
+			List<Registre> registres = registreRepository.getCatByYearMonth(id, year, month);
+			return registres;
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
 	
 }

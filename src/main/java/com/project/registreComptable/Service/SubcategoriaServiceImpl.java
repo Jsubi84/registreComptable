@@ -27,5 +27,5 @@ public class SubcategoriaServiceImpl extends BaseServiceImpl<Subcategoria, Long>
 			throw new Exception(e.getMessage());
 		}
 	}
-	
+
 }

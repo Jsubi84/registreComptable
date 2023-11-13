@@ -39,15 +39,6 @@ public class Subcategoria extends Base{
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 	
-	
-//	@Column(name = "registres")
-//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//	@JoinTable(
-//			name = "sub_registres",
-//			joinColumns = @JoinColumn(name = "subcategoria_id"),
-//			inverseJoinColumns = @JoinColumn(name = "registre_id")
-//			)
-//	@JsonIgnore
 	@JsonBackReference
 	@OneToMany(mappedBy= "subcategoria",cascade = CascadeType.REFRESH, orphanRemoval = true)
 	private List<Registre> registres = new ArrayList<Registre>();

@@ -33,5 +33,16 @@ public interface RegistreRepository extends BaseRepository<Registre, Long>, Regi
     
     @Query(value="SELECT COUNT(*) AS Result FROM registre AS r WHERE r.subcategoria_id= :id", nativeQuery=true)
     int checkDeleteSubcategoria(@Param("id")Long id);
-
+    
+    @Query(value="SELECT SUM(importreg) AS Result FROM registre WHERE subcategoria_id= :id AND YEAR(data)= :year", nativeQuery=true)
+    Double getTotalSubcatByYear(@Param("id")Long id, @Param("year")int year);
+    
+    @Query(value="SELECT SUM(r.importreg) FROM Registre r JOIN subcategoria s ON r.subcategoria_id = s.id JOIN categoria c ON s.categoria_id = c.id WHERE c.id= :id AND YEAR(r.data)= :year", nativeQuery=true)
+    Double getTotalCatByYear(@Param("id")Long id, @Param("year")int year);
+    
+    @Query(value="SELECT * FROM registre WHERE subcategoria_id= :id AND YEAR(data)= :year AND MONTH(data)= :month", nativeQuery=true)
+    List<Registre> getSubcatByYearMonth(@Param("id")Long id, @Param("year")int year, @Param("month")int month);
+    
+    @Query(value="SELECT r.* FROM Registre r JOIN subcategoria s ON r.subcategoria_id = s.id JOIN categoria c ON s.categoria_id = c.id WHERE c.id= :id AND YEAR(r.data)= :year AND MONTH(r.data)= :month", nativeQuery=true)
+    List<Registre> getCatByYearMonth(@Param("id")Long id, @Param("year")int year, @Param("month")int month);
 }
