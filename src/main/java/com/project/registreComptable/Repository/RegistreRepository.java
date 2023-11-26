@@ -40,9 +40,10 @@ public interface RegistreRepository extends BaseRepository<Registre, Long>, Regi
     @Query(value="SELECT SUM(r.importreg) FROM Registre r JOIN subcategoria s ON r.subcategoria_id = s.id JOIN categoria c ON s.categoria_id = c.id WHERE c.id= :id AND YEAR(r.data)= :year", nativeQuery=true)
     Double getTotalCatByYear(@Param("id")Long id, @Param("year")int year);
     
-    @Query(value="SELECT * FROM registre WHERE subcategoria_id= :id AND YEAR(data)= :year AND MONTH(data)= :month", nativeQuery=true)
+    @Query(value="SELECT r FROM Registre r JOIN r.subcategoria s WHERE s.id= :id AND YEAR(r.data)= :year AND MONTH(r.data)= :month")
     List<Registre> getSubcatByYearMonth(@Param("id")Long id, @Param("year")int year, @Param("month")int month);
     
-    @Query(value="SELECT r.* FROM Registre r JOIN subcategoria s ON r.subcategoria_id = s.id JOIN categoria c ON s.categoria_id = c.id WHERE c.id= :id AND YEAR(r.data)= :year AND MONTH(r.data)= :month", nativeQuery=true)
+    //@Query(value="SELECT r.id, r.data, r.importreg, r.subcategoria_id, r.descripcio FROM Registre r JOIN subcategoria s ON r.subcategoria_id = s.id JOIN categoria c ON s.categoria_id = c.id WHERE c.id= :id AND YEAR(r.data)= :year AND MONTH(r.data)= :month", nativeQuery=true)  
+    @Query(value="SELECT r FROM Registre r JOIN r.subcategoria s JOIN s.categoria c WHERE c.id= :id AND YEAR(r.data)= :year AND MONTH(r.data)= :month")
     List<Registre> getCatByYearMonth(@Param("id")Long id, @Param("year")int year, @Param("month")int month);
 }

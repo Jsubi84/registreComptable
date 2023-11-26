@@ -40,15 +40,6 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 		}
 	}
 	
-	@GetMapping("/getResumAny")
-	public ResponseEntity<?> getResumAny(@RequestParam int year){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(service.getResumAny( year));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-		}
-	}
-	
 	@GetMapping("/ckDeleteSubcat")
 	public ResponseEntity<?> checkDeleteSubcategoria(@RequestParam Long id){
 		try {
@@ -67,7 +58,6 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 		}
 	}
 	
-	
 	@GetMapping("/getRegistreRepeate")
 	public ResponseEntity<?> getRegistreRepeate(@RequestParam Double importReg, @RequestParam String data, @RequestParam Long subcatId){
 		try {
@@ -82,42 +72,6 @@ public class RegistreController extends BaseControllerImpl<Registre, RegistreSer
 	public ResponseEntity<?> getRegistreFilter(@RequestBody registreFilter filter){
 		try {		
 			return ResponseEntity.status(HttpStatus.OK).body(service.filtred(filter.getDInici(), filter.getDFi(), filter.getSubcatId(), filter.getPageable()));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-		}
-	}
-	
-	@GetMapping("/getTotalSubcatByYear")
-	public ResponseEntity<?> getTotalSubcatByYear(@RequestParam Long idSubcat, @RequestParam int year){
-		try {		
-			return ResponseEntity.status(HttpStatus.OK).body(service.getTotalSubcatByYear(idSubcat, year));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-		}
-	}
-	
-	@GetMapping("/getTotalCatByYear")
-	public ResponseEntity<?> getTotalCatByYear(@RequestParam Long idCat, @RequestParam int year){
-		try {		
-			return ResponseEntity.status(HttpStatus.OK).body(service.getTotalCatByYear(idCat, year));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-		}
-	}
-	
-	@GetMapping("/getCatByYearMonth")
-	public ResponseEntity<?> getCatByYearMonth(@RequestParam Long idCat, @RequestParam int year, @RequestParam int month){
-		try {		
-			return ResponseEntity.status(HttpStatus.OK).body(service.getCatByYearMonth(idCat, year, month));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
-		}
-	}
-	
-	@GetMapping("/getSubcatByYearMonth")
-	public ResponseEntity<?> getSubcatByYearMonth(@RequestParam Long idSubcat, @RequestParam int year, @RequestParam int month){
-		try {		
-			return ResponseEntity.status(HttpStatus.OK).body(service.getSubcatByYearMonth(idSubcat, year, month));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\""+ e.getMessage()+"\"}");
 		}
